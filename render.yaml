@@ -4,6 +4,7 @@ services:
     runtime: docker
     plan: starter
     healthCheckPath: /api/health
+    autoDeployTrigger: off
     envVars:
       - key: PORT
         value: 3001

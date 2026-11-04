@@ -1,5 +1,7 @@
 # Kahfi Party Star 🎙️👑
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/brillyandev/kahfi-party-star)
+
 Aplikasi **voice room** sosial dengan sistem koin, gift, CP, ranking, VIP/SVIP, dan toko aset
 yang dikelola langsung oleh Developer. Tampilan hijau-emas, dioptimalkan untuk ponsel.
 
@@ -67,6 +69,9 @@ Dibuat otomatis saat server pertama kali dijalankan.
 ## Deploy
 
 ### Render (disarankan: butuh WebSocket + disk permanen)
+
+Klik tombol **Deploy to Render** di atas, atau buka langsung:
+https://render.com/deploy?repo=https://github.com/brillyandev/kahfi-party-star
 
 1. Push repo ini ke GitHub, lalu **New → Web Service** di Render.
 2. Render mendeteksi `render.yaml` / `Dockerfile` secara otomatis.
