@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: kahfi-party-star
+    runtime: docker
+    plan: starter
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: DATA_DIR
+        value: /app/data
+      - key: UPLOAD_DIR
+        value: /app/uploads
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DEV_PASSWORD
+        sync: false
+    disk:
+      name: kahfi-data
+      mountPath: /app/data
+      sizeGB: 5
