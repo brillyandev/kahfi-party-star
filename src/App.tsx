@@ -15,6 +15,7 @@ import InventoryPage from './pages/InventoryPage';
 import WalletPage from './pages/WalletPage';
 import ProfilePage from './pages/ProfilePage';
 import StaffPage from './pages/StaffPage';
+import InstallBanner from './components/InstallBanner';
 
 const TABS = [
   { path: '/', icon: '🏠', label: 'Party' },
@@ -54,6 +55,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <InstallBanner />
       <Routes>
         <Route path="/" element={<PartyPage />} />
         <Route path="/discover" element={<DiscoverPage />} />

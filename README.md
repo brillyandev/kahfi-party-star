@@ -32,6 +32,18 @@ yang dikelola langsung oleh Developer. Tampilan hijau-emas, dioptimalkan untuk p
 Aturan hierarki: seseorang tidak dapat mengubah pengguna dengan peran setara atau lebih tinggi,
 dan hanya Developer yang dapat membuat Developer.
 
+## Pasang di HP (PWA)
+
+Aplikasi ini sudah berupa **PWA**, jadi bisa dipasang ke layar utama tanpa lewat Play Store.
+
+1. Buka alamat aplikasi di Chrome (Android) atau Safari (iPhone). Harus HTTPS, jadi pakai hasil deploy.
+2. Android: akan muncul tombol **Pasang** di dalam aplikasi, atau menu ⋮ → *Pasang aplikasi*.
+3. iPhone: tombol Bagikan → *Tambah ke Layar Utama*.
+4. Ikon mahkota muncul di layar utama dan aplikasi terbuka layar penuh tanpa address bar.
+
+Butuh APK untuk dibagikan ke orang lain? Buka https://www.pwabuilder.com, masukkan alamat aplikasi,
+lalu unduh paket Android (APK/AAB).
+
 ## Menjalankan lokal
 
 ```bash
