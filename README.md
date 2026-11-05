@@ -32,6 +32,48 @@ yang dikelola langsung oleh Developer. Tampilan hijau-emas, dioptimalkan untuk p
 Aturan hierarki: seseorang tidak dapat mengubah pengguna dengan peran setara atau lebih tinggi,
 dan hanya Developer yang dapat membuat Developer.
 
+## Versi website statis (tanpa Render)
+
+Frontend bisa di-build jadi situs statis murni dan ditaruh di hosting apa pun
+(GitHub Pages, Netlify, Cloudflare Pages, atau dibungkus jadi APK).
+
+```bash
+npm run build          # hasil ada di dist/
+```
+
+Hasil `dist/` hanya HTML, JS, ikon, dan `config.js`. Alamat server API bisa diubah
+tanpa build ulang, cukup edit `config.js` di hasil build:
+
+```js
+window.__KPS_API__ = "https://alamat-server-kamu.com";
+```
+
+Kosongkan `""` kalau website dan server satu domain.
+
+Catatan penting: tampilan, login, koin, gift, dan suara tetap butuh server Node yang
+hidup. Situs statis sendirian hanya menampilkan halamannya.
+
+## Jalan tanpa Render
+
+1. **GitHub Codespaces** (tanpa kartu, kuota gratis). Dari halaman repo klik *Code* →
+   *Codespaces* → *Create codespace*. Repo ini sudah punya `.devcontainer` yang otomatis
+   menjalankan `npm install` dan `npm run dev`. Port 5173 dibuka publik, jadi alamat
+   `https://xxxx-5173.app.github.dev` bisa langsung dibuka di HP dan dipasang sebagai PWA.
+   Catatan: Codespace berhenti sendiri saat tidak dipakai, jadi cocok untuk uji coba.
+2. **VPS atau panel sendiri** (Vultr, Contabo, Hostinger, dsb). Pakai Docker:
+
+```bash
+docker build -t kahfi-party-star .
+docker run -d -p 3001:3001 -e DEV_PASSWORD=Dermawan123 \
+  -v kahfi-data:/app/data -v kahfi-up:/app/uploads kahfi-party-star
+```
+
+   Lalu pasang reverse proxy (Nginx/Caddy) untuk HTTPS. Ini pilihan paling stabil
+   karena WebSocket dan SQLite jalan permanen.
+3. **Hosting Node lain** seperti Railway, Koyeb, atau Fly.io. Caranya sama seperti
+   Render: build `npm install && npm run build`, start `npm start`, dan pasang disk
+   permanen di `/app/data`.
+
 ## Pasang di HP (PWA)
 
 Aplikasi ini sudah berupa **PWA**, jadi bisa dipasang ke layar utama tanpa lewat Play Store.

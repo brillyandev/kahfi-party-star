@@ -26,6 +26,15 @@ export type Me = {
 
 const TOKEN_KEY = 'kps:token';
 
+/**
+ * Alamat server API. Kosong berarti satu domain dengan website (disarankan).
+ * Bisa diatur dua cara:
+ *   - saat build : VITE_API_BASE=https://api.contoh.com npm run build
+ *   - saat jalan : ubah public/config.js tanpa build ulang
+ */
+const runtimeBase = typeof window !== 'undefined' ? ((window as any).__KPS_API__ || '') : '';
+export const API_BASE = String(import.meta.env.VITE_API_BASE || runtimeBase || '').replace(/\/$/, '');
+
 export const auth = {
   get: () => localStorage.getItem(TOKEN_KEY) || '',
   set: (t: string) => localStorage.setItem(TOKEN_KEY, t),
@@ -42,7 +51,7 @@ export class ApiError extends Error {
 
 export async function api<T = any>(method: string, path: string, body?: unknown): Promise<T> {
   const isForm = typeof FormData !== 'undefined' && body instanceof FormData;
-  const res = await fetch(`/api${path}`, {
+  const res = await fetch(`${API_BASE}/api${path}`, {
     method,
     headers: {
       ...(isForm ? {} : { 'Content-Type': 'application/json' }),

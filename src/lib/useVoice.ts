@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { io, type Socket } from 'socket.io-client';
-import { auth } from './api';
+import { API_BASE, auth } from './api';
 
 export type Peer = {
   id: string; userId: number; name: string; avatar?: string; role: string; vip: number; svip: number;
@@ -135,7 +135,7 @@ export function useVoice() {
       if (stream.current) watch('self', stream.current);
       loop();
 
-      const s = io({ auth: { token: auth.get() }, transports: ['websocket', 'polling'] });
+      const s = io(API_BASE || undefined, { auth: { token: auth.get() }, transports: ['websocket', 'polling'] });
       sock.current = s;
       s.on('connect_error', () => { setError('Tidak bisa terhubung ke server.'); setStatus('error'); });
 
