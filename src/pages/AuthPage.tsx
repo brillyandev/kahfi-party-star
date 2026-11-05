@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { auth, post, type Me } from '../lib/api';
+import { auth, post, API_BASE, setApiBase, type Me } from '../lib/api';
 import { useApp } from '../lib/ctx';
 
 export default function AuthPage() {
@@ -66,4 +66,17 @@ export default function AuthPage() {
       </form>
     </div>
   );
+
+        <button
+          type="button"
+          className="link btn-plain"
+          style={{ marginTop: 14, fontSize: 11, opacity: 0.55 }}
+          onClick={() => {
+            const next = window.prompt('Alamat server Kahfi Party Star (contoh: https://server.contoh.com)', API_BASE);
+            if (next !== null) setApiBase(next);
+          }}
+        >
+          Server: {API_BASE || 'belum diatur'}
+        </button>
+
 }

@@ -37,6 +37,16 @@ app.use((_req, res, next) => {
   res.setHeader('Referrer-Policy', 'same-origin');
   next();
 });
+/* CORS untuk /api: dipakai aplikasi Android/WebView yang origin-nya berbeda. */
+app.use('/api', (req, res, next) => {
+  const origin = process.env.CORS_ORIGIN || '*';
+  res.setHeader('Access-Control-Allow-Origin', origin);
+  res.setHeader('Vary', 'Origin');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
+  if (req.method === 'OPTIONS') return res.sendStatus(204);
+  next();
+});
 app.use(express.json({ limit: '200kb' }));
 
 /* Aset unggahan. SVG disajikan dengan CSP ketat supaya script tidak bisa jalan. */

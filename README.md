@@ -74,6 +74,11 @@ docker run -d -p 3001:3001 -e DEV_PASSWORD=Dermawan123 \
    Render: build `npm install && npm run build`, start `npm start`, dan pasang disk
    permanen di `/app/data`.
 
+## Versi Android (APK)
+
+Sudah tersedia pembungkus WebView di folder `android/`. Rilis APK siap pasang ada di
+halaman Releases repo ini. Cara membangun ulang: lihat `android/README.md`.
+
 ## Pasang di HP (PWA)
 
 Aplikasi ini sudah berupa **PWA**, jadi bisa dipasang ke layar utama tanpa lewat Play Store.

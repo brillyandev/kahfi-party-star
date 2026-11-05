@@ -1,0 +1,22 @@
+{
+  "name": "Kahfi Party Star",
+  "short_name": "Kahfi Star",
+  "description": "Voice room sosial: ngobrol, kirim gift, dan jadi bintang di party.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b3d26",
+  "theme_color": "#0d4a30",
+  "lang": "id",
+  "categories": ["social", "entertainment"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Party", "url": "/", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Saya", "url": "/me", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

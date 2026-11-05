@@ -32,8 +32,17 @@ const TOKEN_KEY = 'kps:token';
  *   - saat build : VITE_API_BASE=https://api.contoh.com npm run build
  *   - saat jalan : ubah public/config.js tanpa build ulang
  */
+const savedBase = typeof window !== 'undefined' ? (localStorage.getItem('kps:apiBase') || '') : '';
 const runtimeBase = typeof window !== 'undefined' ? ((window as any).__KPS_API__ || '') : '';
-export const API_BASE = String(import.meta.env.VITE_API_BASE || runtimeBase || '').replace(/\/$/, '');
+export const API_BASE = String(savedBase || import.meta.env.VITE_API_BASE || runtimeBase || '').replace(/\/$/, '');
+
+/** Simpan alamat server lalu muat ulang agar dipakai seluruh aplikasi. */
+export function setApiBase(url: string) {
+  const clean = url.trim().replace(/\/+$/, '');
+  if (clean) localStorage.setItem('kps:apiBase', clean);
+  else localStorage.removeItem('kps:apiBase');
+  location.reload();
+}
 
 export const auth = {
   get: () => localStorage.getItem(TOKEN_KEY) || '',
